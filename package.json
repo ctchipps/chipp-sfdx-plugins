@@ -5,6 +5,10 @@
   "author": "@ctchipps",
   "bugs": "https://github.com/ctchipps/chipp-sfdx-plugins/issues",
   "dependencies": {
+    "autodetect-decoder-stream": "^2.0.0",
+    "csv-parse": "^4.12.0",
+    "csv-writer": "^1.5.0",
+    "fs-extra": "^9.0.1",
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/errors": "^1",
