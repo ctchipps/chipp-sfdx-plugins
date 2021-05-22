@@ -1,6 +1,6 @@
 import { flags, SfdxCommand } from '@salesforce/command';
 import { file2CV } from '../../common/file2CV';
-import { CreateResult, Record } from '../../common/typeDefs';
+import { Record } from '../../common/typeDefs';
 
 export default class Upload extends SfdxCommand {
     public static description = 'upload multiple files based on a csv as standalone records or linked to records';
@@ -43,7 +43,7 @@ export default class Upload extends SfdxCommand {
 
         const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-        const csvWriter = createCsvWriter({
+        createCsvWriter({
           path: 'results.csv',
           header: [
               {id: 'PathOnClient', title: 'PathOnClient'},
