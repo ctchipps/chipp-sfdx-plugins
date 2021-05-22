@@ -30,7 +30,37 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
+* [`sfdx chipp:upload -f <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-chippupload--f-filepath--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
+## `sfdx chipp:upload -f <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+upload multiple files based on a csv as standalone records or linked to records
+
+```
+USAGE
+  $ sfdx chipp:upload -f <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -f, --csv=csv                                                                     (required) path to csv
+
+  -u, --targetusername=targetusername                                               username or alias for the target
+                                                                                    org; overrides default target org
+
+  --apiversion=apiversion                                                           override the api version used for
+                                                                                    api requests made by this command
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+EXAMPLE
+  sfdx chipp:data:files:upload -f ~/FilesToUpload.csv
+       //uploads files specified in csv
+```
+
+_See code: [src/commands/chipp/upload.ts](https://github.com/ctchipps/chipp-sfdx-plugins/blob/v0.1.0/src/commands/chipp/upload.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin
