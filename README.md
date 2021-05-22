@@ -30,19 +30,19 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
-* [`sfdx chipp:upload -f <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-chippupload--f-filepath--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx chipp:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-chippupload--p-filepath--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
-## `sfdx chipp:upload -f <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+## `sfdx chipp:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 upload multiple files based on a csv as standalone records or linked to records
 
 ```
 USAGE
-  $ sfdx chipp:upload -f <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  $ sfdx chipp:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel 
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
-  -f, --csv=csv                                                                     (required) path to csv
+  -p, --pathtocsv=pathtocsv                                                         (required) path to csv
 
   -u, --targetusername=targetusername                                               username or alias for the target
                                                                                     org; overrides default target org
@@ -56,7 +56,7 @@ OPTIONS
                                                                                     this command invocation
 
 EXAMPLE
-  sfdx chipp:data:files:upload -f ~/FilesToUpload.csv
+  sfdx chipp:data:files:upload -p ~/FilesToUpload.csv
        //uploads files specified in csv
 ```
 
