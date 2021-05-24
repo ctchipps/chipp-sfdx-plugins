@@ -7,7 +7,6 @@ sfdx plugins by Clay Chipps
 [![CircleCI](https://circleci.com/gh/ctchipps/chipp-sfdx-plugins/tree/master.svg?style=shield)](https://circleci.com/gh/ctchipps/chipp-sfdx-plugins/tree/master)
 [![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/ctchipps/chipp-sfdx-plugins?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/chipp-sfdx-plugins/branch/master)
 [![Codecov](https://codecov.io/gh/ctchipps/chipp-sfdx-plugins/branch/master/graph/badge.svg)](https://codecov.io/gh/ctchipps/chipp-sfdx-plugins)
-[![Greenkeeper](https://badges.greenkeeper.io/ctchipps/chipp-sfdx-plugins.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/ctchipps/chipp-sfdx-plugins/badge.svg)](https://snyk.io/test/github/ctchipps/chipp-sfdx-plugins)
 [![Downloads/week](https://img.shields.io/npm/dw/chipp-sfdx-plugins.svg)](https://npmjs.org/package/chipp-sfdx-plugins)
 [![License](https://img.shields.io/npm/l/chipp-sfdx-plugins.svg)](https://github.com/ctchipps/chipp-sfdx-plugins/blob/master/package.json)
@@ -30,15 +29,15 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
-* [`sfdx chipp:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-chippupload--p-filepath--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx chipp:data:files:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-chippdatafilesupload--p-filepath--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
-## `sfdx chipp:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+## `sfdx chipp:data:files:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
-upload multiple files based on a csv as standalone records or linked to records
+upload multiple files based on a csv as standalone files or linked to records
 
 ```
 USAGE
-  $ sfdx chipp:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  $ sfdx chipp:data:files:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel 
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
@@ -57,10 +56,9 @@ OPTIONS
 
 EXAMPLE
   sfdx chipp:data:files:upload -p ~/FilesToUpload.csv
-       //uploads files specified in csv
 ```
 
-_See code: [src/commands/chipp/upload.ts](https://github.com/ctchipps/chipp-sfdx-plugins/blob/v0.1.0/src/commands/chipp/upload.ts)_
+_See code: [src/commands/chipp/data/files/upload.ts](https://github.com/ctchipps/chipp-sfdx-plugins/blob/v0.1.0/src/commands/chipp/data/files/upload.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin

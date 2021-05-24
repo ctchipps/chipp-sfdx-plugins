@@ -1,15 +1,13 @@
 import { flags, SfdxCommand } from "@salesforce/command";
-import { file2CV } from "../../common/file2CV";
-import { Record } from "../../common/typeDefs";
+import { file2CV } from "../../../../common/file2CV";
+import { Record } from "../../../../common/typeDefs";
 
 export default class Upload extends SfdxCommand {
   public static description =
-    "upload multiple files based on a csv as standalone records or linked to records";
+    "upload multiple files based on a csv as standalone files or linked to records";
 
   public static examples = [
-    `sfdx chipp:data:files:upload -p ~/FilesToUpload.csv
-    //uploads files specified in csv
-    `,
+    `sfdx chipp:data:files:upload -p ~/FilesToUpload.csv`,
   ];
 
   protected static flagsConfig = {
@@ -53,36 +51,51 @@ export default class Upload extends SfdxCommand {
 
     this.ux.startSpinner("Loading files");
 
-    for (let file of filesToUpload) {
-      const CV = (await file2CV(
-        conn,
-        file.PathOnClient,
-        file.Title,
-        file.FirstPublishLocationId
-      )) as Record;
-
-      file.ContentDocumentId = CV.ContentDocumentId;
-    }
-
-    this.ux.stopSpinner();
-
-    this.ux.startSpinner("Writing results");
-
     const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
-    const csvWriter = createCsvWriter({
-      path: "results.csv",
+    const successWriter = createCsvWriter({
+      path: "success.csv",
       header: [
         { id: "PathOnClient", title: "PathOnClient" },
         { id: "Title", title: "Title" },
         { id: "FirstPublishLocationId", title: "FirstPublishLocationId" },
-        { id: "ContentDocumentId", title: "ContentDocumentId" }
+        { id: "ContentDocumentId", title: "ContentDocumentId" },
       ],
     });
 
-    csvWriter.writeRecords(filesToUpload);
+    const errorWriter = createCsvWriter({
+      path: "error.csv",
+      header: [
+        { id: "PathOnClient", title: "PathOnClient" },
+        { id: "Title", title: "Title" },
+        { id: "FirstPublishLocationId", title: "FirstPublishLocationId" },
+        { id: "Error", title: "Error" }
+      ],
+    });
 
-    this.ux.stopSpinner();
+    for (let [i, file] of filesToUpload.entries()) {
+      let success = [];
+      let failure = [];
+      this.ux.startSpinner(`Loading file ${i + 1}`);
+      try {
+        const CV = (await file2CV(
+          conn,
+          file.PathOnClient,
+          file.Title,
+          file.FirstPublishLocationId
+        )) as Record;
+
+        file.ContentDocumentId = CV.ContentDocumentId;
+        success.push(file);
+        await successWriter.writeRecords(success);
+      } catch (error) {
+        file.Error = error;
+        failure.push(file);
+        await errorWriter.writeRecords(failure);
+      } finally {
+        this.ux.stopSpinner();
+      }
+    }
 
     return "Success";
   }
