@@ -20,7 +20,7 @@ Utilities developed by Clay Chipps (@ctchipps)
 ### **Install as a SalesforceDX Plugin**
 
 ```bash  
-sfdx plugins:install @dx-cli-toolbox/sfdx-toolbox-package-utils
+sfdx plugins:install chipp-sfdx-plugins
 ```
 
 You will be prompted to confirm that you want to install an unsigned plugin. Choose "yes"
