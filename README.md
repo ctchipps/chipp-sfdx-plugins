@@ -52,7 +52,7 @@ sfdx plugins:link .
 
 ## `sfdx chipp:data:files:upload -p <filepath> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
-upload multiple files based on a csv as standalone files or linked to records
+Upload multiple files based on a csv as standalone files or linked to records. The csv must have the following headers: Title, PathOnClient. The csv may have the following headers: FirstPublishLocationId. This utility uses the same setup as [Salesforce Dataloader for files](https://help.salesforce.com/articleView?id=000314772&type=1&mode=1).
 
 ```
 USAGE

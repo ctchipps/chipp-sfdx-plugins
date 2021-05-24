@@ -4,7 +4,7 @@ import { Record } from "../../../../common/typeDefs";
 
 export default class Upload extends SfdxCommand {
   public static description =
-    "upload multiple files based on a csv as standalone files or linked to records";
+    "Upload multiple files based on a csv as standalone files or linked to records. The csv must have the following headers: Title, PathOnClient. The csv may have the following headers: FirstPublishLocationId. This utility uses the same setup as [Salesforce Dataloader for files](https://help.salesforce.com/articleView?id=000314772&type=1&mode=1).";
 
   public static examples = [
     `sfdx chipp:data:files:upload -p ~/FilesToUpload.csv`,
